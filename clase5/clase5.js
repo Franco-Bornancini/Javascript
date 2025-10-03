@@ -54,6 +54,17 @@ class taskList{
             console.log("no existe nignuna tarea");
         }
     }
+
+    editTask(id, updateTask){
+        const taskToEdit = this.tasks.find((task) => task.id === id)
+        if(taskToEdit){
+            taskToEdit.description = updateTask.description;
+            taskToEdit.date = updateTask.date;
+            taskToEdit.state = updateTask.state;
+        }else{
+            alert("tarea no encontrada")
+        }
+    }
 }
 
 // GENERACION DE MI LISTA DE TAREAS
@@ -70,6 +81,14 @@ if(myTaskList.tasks.length === 0){
     // AGREGAMOS TAREA AL LISTADO
     myTaskList.addTask(task1)
     myTaskList.addTask(task2)
+
+    // EDITAMOS TAREA
+    myTaskList.editTask(1,{
+        description: "Bañarse",
+        date: "25-09-2025",
+        state: "Progreso",
+
+    })
 }
 
 myTaskList.saveInLocalStorage()
